@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обнять березу онлайн</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #00796b;
+        }
+        .tree {
+            width: 300px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .hug {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 193, 7, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 10; /* Чтобы сообщение было выше других элементов */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative; /* Для обеспечения кликабельности */
+            z-index: 15; /* Чтобы кнопка была выше всех изображений */
+        }
+        .counter {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #00796b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Обнять березу онлайн</h1>
+    <div class="tree">
+        <img id="treeImage" src="https://avatars.mds.yandex.net/i?id=265e1c5f9e3094b393ebaf84034fc832_l-5869113-images-thumbs&n=13" alt="Береза" width="300">
+        <img id="hugImage" src="https://thumbs.dreamstime.com/b/%D0%BC%D0%BE-%D0%BE-%D0%BE%D0%B9-%D1%87%D0%B5%D0%BE%D0%B2%D0%B5%D0%BA-%D1%81-%D0%B2%D1%8E%D0%B1%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D1%8C%D1%8E-%D0%BE%D0%B1%D0%BD%D0%B8%D0%BC%D0%B0%D0%B5%D1%82-%D0%B1%D0%B5%D1%80%D0%B5%D0%B7%D1%83-57630961.jpg" alt="Обнимающий человек" width="300" style="display: none;">
+        <div class="hug" id="hugMessage">Вы обняли березу!</div>
+    </div>
+    <button onclick="hugTree()">Обнять березу</button>
+    <div class="counter" id="hugCounter">Вы обняли березу 0 раз</div>
+
+    <script>
+        // Определение функции hugTree
+        function hugTree() {
+            const hugMessage = document.getElementById("hugMessage");
+            const hugImage = document.getElementById("hugImage");
+            const treeImage = document.getElementById("treeImage");
+            const counter = document.getElementById("hugCounter");
+
+            // Скрыть изображение березы и показать изображение обнимающего человека
+            treeImage.style.display = "none";
+            hugImage.style.display = "block";
+
+            // Увеличить счетчик
+            hugCount++;
+            counter.textContent = `Вы обняли березу ${hugCount} раз`;
+
+            // Показать сообщение
+            hugMessage.style.display = "block";
+
+            // Скрыть сообщение и изображение обнимающего человека через 2 секунды
+            setTimeout(() => {
+                hugMessage.style.display = "none";
+                hugImage.style.display = "none";
+                treeImage.style.display = "block"; // Вернуть изображение березы
+            }, 2000);
+        }
+
+        // Инициализация счетчика
+        let hugCount = 0;
+    </script>
+</body>
+</html>
